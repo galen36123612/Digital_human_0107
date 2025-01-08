@@ -297,7 +297,7 @@ export default function InteractiveAvatar() {
   }
 
 
-return (
+  return (
     <div className="page w-screen h-[calc(100dvh)] flex flex-col justify-center items-center overflow-hidden">
       {stream && (
         <div className="w-screen  h-[calc(100dvh)] justify-center  items-center flex flex-row rounded-lg overflow-hidden z-30 relative">
