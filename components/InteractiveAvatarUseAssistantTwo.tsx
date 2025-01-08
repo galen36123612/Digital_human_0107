@@ -297,7 +297,7 @@ export default function InteractiveAvatar() {
   }
 
 
-  return (
+return (
     <div className="page w-screen h-[calc(100dvh)] flex flex-col justify-center items-center overflow-hidden">
       {stream && (
         <div className="w-screen  h-[calc(100dvh)] justify-center  items-center flex flex-row rounded-lg overflow-hidden z-30 relative">
@@ -362,11 +362,11 @@ export default function InteractiveAvatar() {
         <br /> 
         {debug}
       </p>*/}
-
+      
       <div className="flex flex-col w-full absolute bottom-2 gap-1 px-2 z-40">
         <div className="w-full overflow-hidden z-20 max-h-[200px] rounded py-1 mb-12">
           <MessageList messages={messages} />
-        </div>
+        </div> 
 
         <div className="w-full flex flex-row relative items-center gap-2" style={{ zIndex: 99 }}>
           {isText ? (
