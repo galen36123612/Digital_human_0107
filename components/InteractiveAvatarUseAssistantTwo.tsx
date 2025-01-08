@@ -297,7 +297,7 @@ export default function InteractiveAvatar() {
   }
 
 
-  /*return (
+  return (
     <div className="page w-screen h-[calc(100dvh)] flex flex-col justify-center items-center overflow-hidden">
       {stream && (
         <div className="w-screen  h-[calc(100dvh)] justify-center  items-center flex flex-row rounded-lg overflow-hidden z-30 relative">
@@ -362,7 +362,7 @@ export default function InteractiveAvatar() {
         <br /> 
         {debug}
       </p>*/}
-/*
+
       <div className="flex flex-col w-full absolute bottom-2 gap-1 px-2 z-40">
         <div className="w-full overflow-hidden z-20 max-h-[200px] rounded py-1 mb-12">
           <MessageList messages={messages} />
@@ -426,116 +426,4 @@ export default function InteractiveAvatar() {
       </div>
     </div >
   );
-}*/
-return (
-  <div className="page w-screen h-[calc(100dvh)] flex flex-col justify-center items-center overflow-hidden bg-neutral-300">
-    {stream && (
-      <div className="w-screen h-[calc(100dvh)] flex flex-col justify-center items-center relative">
-        {/* 視頻容器 - 放大並置中 */}
-        <div className="w-full flex-1 flex justify-center items-center overflow-hidden">
-          <video
-            ref={mediaStream}
-            autoPlay
-            playsInline
-            muted={!touched}
-            className="w-auto h-[90vh] max-w-none object-cover" // 調整視頻尺寸
-            style={{
-              transform: 'scale(1.5)', // 放大視頻
-              backgroundColor: '#D4D4D4',
-            }}
-          >
-            <track kind="captions" />
-          </video>
-        </div>
-
-        {/* 底部控制區域 - 固定在底部 */}
-        <div className="absolute bottom-0 left-0 right-0 flex flex-col w-full px-4 pb-8 gap-4">
-          {/* 消息列表 */}
-          <div className="w-full overflow-hidden z-20 max-h-[200px] rounded py-1">
-            <MessageList messages={messages} />
-          </div>
-
-          {/* 輸入區域 */}
-          <div className="w-full flex flex-row relative items-center gap-2">
-            {isText ? (
-              <InteractiveAvatarTextInput
-                disabled={!stream}
-                input={input}
-                label="Chat"
-                talking={talking}
-                loading={isLoadingChat}
-                placeholder="請輸入你的問題"
-                setInput={setInput}
-                onStop={() => handleInterrupt()}
-                onSubmit={() => handlerSendMessage()}
-              />
-            ) : (
-              talking ? (
-                <div className="w-full flex flex-row justify-center relative">
-                  <Button
-                    radius="full"
-                    className="bg-danger-500 ml-10 h-16 w-16 absolute bottom-0"
-                    isIconOnly
-                  >
-                    <StopCircle fontSize={80} onClick={() => handleInterrupt()} />
-                  </Button>
-                </div>
-              ) : (
-                <MicrophoneInput
-                  contentChange={(content) => setInput(content)}
-                  talking={talking}
-                  onSubmit={micSubmit}
-                  onStatusChange={(status) => 
-                    setListening(status == MicrophoneStatus.Listening)
-                  }
-                />
-              )
-            )}
-
-            {/* 切換按鈕 */}
-            <Tooltip content={!isText ? "切換鍵盤" : "切換錄音"}>
-              <Button
-                isIconOnly
-                className={clsx(
-                  "mr text-white w-1",
-                  !recording ? "bg-gradient-to-tr from-indigo-500 to-indigo-300" : ""
-                )}
-                size="md"
-                variant="shadow"
-                onClick={() => swithText(!isText)}
-              >
-                {!isText ? <Keyboard size={30} /> : <Microphone size={30} />}
-              </Button>
-            </Tooltip>
-          </div>
-        </div>
-      </div>
-    )}
-
-    {/* 載入中提示 */}
-    {isLoadingSession && (
-      <div className="h-full justify-center absolute top-0 left-0 items-center flex flex-col gap-8 w-full self-center z-50">
-        <Spinner color="default" size="lg" />
-        <span>初始化中....</span>
-      </div>
-    )}
-
-    {/* 初始提示 */}
-    {!touched && !isLoadingSession && (
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-        <span className="z-50 cursor-pointer text-lg px-4 py-2 backdrop-blur-sm bg-white/10 rounded-md">
-          請點擊開始對話
-        </span>
-      </div>
-    )}
-
-    {/* 狀態提示 */}
-    {tips && (
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-        <span className="text-wrap backdrop-blur-sm bg-white/10 rounded-md p-2 z-50 px-4">
-          {tips}
-        </span>
-      </div>
-    )}
-  </div>
-);
+}
