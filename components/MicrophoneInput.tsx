@@ -39,7 +39,7 @@ export default function MicrophoneInput({
     if (play) return;
     recognition.current = new SpeechRecognition();
     recognition.current.continuous = true;
-    recognition.current.lang = "zh", "en-US", "zh-HK";
+    recognition.current.lang = "zh";
     //recognition.current.lang = "zh-HK", "zh-TW";
     recognition.current.interimResults = true;
     recognition.current.maxAlternatives = 1;
