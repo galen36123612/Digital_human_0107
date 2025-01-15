@@ -1,4 +1,3 @@
-/*
 import { useRef, useState } from "react";
 
 import Wave from "./Wave";
@@ -40,7 +39,7 @@ export default function MicrophoneInput({
     if (play) return;
     recognition.current = new SpeechRecognition();
     recognition.current.continuous = true;
-    recognition.current.lang = "zh";
+    recognition.current.lang = "zh", "en-US", "zh-HK";
     //recognition.current.lang = "zh-HK", "zh-TW";
     recognition.current.interimResults = true;
     recognition.current.maxAlternatives = 1;
@@ -86,9 +85,9 @@ export default function MicrophoneInput({
     </button>
   );
 }
-*/
-//新增廣東話跟英文選項0115
 
+//新增廣東話跟英文選項0115
+/*
 import { useRef, useState } from "react";
 import Wave from "./Wave";
 import { Microphone, Globe } from "@phosphor-icons/react";
@@ -206,3 +205,4 @@ export default function MicrophoneInput({
     </div>
   );
 }
+*/
